@@ -15,7 +15,8 @@
 //     img: "https://ukravto.ua/files/Text/190225_JEEP_NEW_CHEROKEE_9.jpg",
 //     price: 1200000,
 //     description:
-//       "Як і всі моделі Jeep - володіє безпрецедентним поєднанням ходових якостей, комфортності та міського шику. 2,4-літровий бензиновий двигун в поєднанні з шестиступінчастою автоматичною коробкою передач, яка відрізняється плавністю перемикання.",
+//       'Як і всі моделі Jeep - володіє безпрецедентним поєднанням ходових якостей, комфортності та міського шику. 2,4-літровий бензиновий двигун в поєднанні з шестиступінчастою автоматичною коробкою передач, яка відрізняється плавністю перемикання.',
+
 //   },
 //   {
 //     name: "toyota",
@@ -126,18 +127,8 @@
 //   markup.insertAdjacentHTML('beforeend', result);
 // }
 
-// createMarkup();
-
-// // 3.2 ДОБАВТЕ КНОПКУ, ЧЕРЕЗ ЯКУ МИ КУПЛЯТИМЕМО ТОВАР
-
-// function oneClick(event) {
-//   if (!event.target.classList.contains('btn')) {
-//     return;
-//   }
-//   const btnClick = event.target.closest('li');
-//   console.log(btnClick);
-//   const resultClick = btnClick.dataset.id;
-//   console.log(resultClick);
+// const elements = cars.map(createElements);
+// listEl.append(...elements);
 
 //   const resultBtn = instruments.find(
 //     instrument => instrument.id == resultClick
@@ -146,65 +137,16 @@
 // }
 // markup.addEventListener('click', oneClick);
 
-// ЗАДАЧА 4
-// ПОТРІБНО СТВОРИТИ Ф-ЦІЮ , ЯКА БУДЕ ШУКАТИ НАРЦИСА.ГОЛОВНА УМОВА НАРЦИСА ЗНАЮТЬ УСІ , НАРЦИС НЕ ЗНАЄ НІКОГО
-// // є елемент масиву , який незнає нікого
-// // якщо не одна така людина , то вертаємо not found
-// // якщо один , то перевірити , чи його знають усі люди, якщо так то вертаємо found
+const formEl = document.querySelector('.form');
+const inputPrice = document.querySelector('#price');
+const quantityPrice = document.querySelector('#quantity');
+const totalPrice = document.querySelector('.text-right');
+const spanText = document.querySelector('.amount');
 
-// const people1 = [
-//   {
-//     name: 'Alex',
-//     know: ['Eva', 'Jhon'],
-//   },
-//   {
-//     name: 'Ivan',
-//     know: ['Jhon', 'Alex'],
-//   },
-//   {
-//     name: 'Eva',
-//     know: ['Alex', 'Jhon'],
-//   },
-//   {
-//     name: 'Jhon',
-//     know: [],
-//   },
-// ];
-
-// const people2 = [
-//   {
-//     name: 'Alex',
-//     know: ['Eva', 'Jhon'],
-//   },
-//   {
-//     name: 'Jhon',
-//     know: ['Eva'],
-//   },
-//   {
-//     name: 'Eva',
-//     know: [],
-//   },
-//   {
-//     name: 'Ivan',
-//     know: ['Jhon', 'Alex'],
-//   },
-// ];
-
-// const people3 = [
-//   {
-//     name: 'Alex',
-//     know: ['Eva', 'Jhon'],
-//   },
-//   {
-//     name: 'Jhon',
-//     know: [],
-//   },
-//   {
-//     name: 'Eva',
-//     know: ['Alex', 'Jhon'],
-//   },
-//   {
-//     name: 'Ivan',
-//     know: ['Jhon', 'Alex'],
-//   },
-// ];
+formEl.addEventListener('input', calc);
+function calc() {
+  spanText.textContent = quantityPrice.value;
+  const calcTotal = inputPrice.value * quantityPrice.value;
+  console.log(calcTotal);
+  totalPrice.textContent = calcTotal;
+}
